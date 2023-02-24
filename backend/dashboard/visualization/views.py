@@ -72,12 +72,38 @@
 #              }
     
 #     return Response(data)
-    
+
+
+
+
 
 from .models import Vis
 from .serializers import VisSerializer
 from rest_framework.generics import ListAPIView
+from django.http import HttpResponse
+from datetime import datetime
+import time
+import csv
+
+
+def update_vitals():
+    file = open("K:\Research_group\quinproc\maatrtv\heart_data.csv")
+    csvreader = csv.reader(file)
+    for i in csvreader:
+        # print(i)
+        vitals = Vis()
+        vitals.heart_beat = i[0]
+        vitals.time = datetime.now()
+        vitals.save()
+        # time.sleep(0.2)
+    queryset= Vis.objects.all().values()
+    print(len(queryset))
+    return HttpResponse("OK")
 
 class VisList(ListAPIView):
-    queryset = Vis.objects.all()
-    serializer_class = VisSerializer
+    while True:
+        update_vitals()
+        queryset = Vis.objects.all()
+        serializer_class = VisSerializer 
+    # queryset = Vis.objects.all()
+    # serializer_class = VisSerializer  

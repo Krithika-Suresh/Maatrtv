@@ -4,4 +4,4 @@ from .models import Vis
 class VisSerializer(ModelSerializer):
     class Meta:
         model = Vis
-        fields = '__all__'
+        fields = '__all__' 

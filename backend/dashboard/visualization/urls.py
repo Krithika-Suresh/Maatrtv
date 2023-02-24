@@ -8,4 +8,5 @@ urlpatterns = [
     # path('', views.HomeView.as_view()),
     # path('visualization/', views.graph),
     path('vitals/', views.VisList.as_view()),
+    path('update/', views.update_vitals),
 ]

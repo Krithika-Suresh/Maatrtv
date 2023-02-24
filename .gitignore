@@ -6,3 +6,4 @@ azure_data_ex.py/
 heart_data.csv
 heart_data.txt
 heart_data.xlsx
+*.sqlite3
